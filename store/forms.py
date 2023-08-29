@@ -11,4 +11,4 @@ class CreateStoreForm(forms.ModelForm):
         fields = ('product_name', 'new_qty', 'name_company', 'supplier',)
 
 
-MyFormSet = formset_factory(CreateStoreForm, extra=3)
+MyFormSet = formset_factory(CreateStoreForm, extra=2)

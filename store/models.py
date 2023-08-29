@@ -22,7 +22,7 @@ class Store(models.Model):
     slug = models.SlugField(unique=True)
     old_qty = models.CharField(max_length=50, default=0)
     new_qty = models.CharField(max_length=50, default=0)
-    total_qty = models.CharField(max_length=20)
+    total_qty = models.CharField(max_length=20,default=0)
     name_company = models.CharField(max_length=20)
     supplier = models.ForeignKey(UserType, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True,)

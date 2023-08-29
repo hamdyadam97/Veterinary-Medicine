@@ -1,23 +1,30 @@
 from django.shortcuts import render, redirect
-from .forms import MyFormSet, CreateStoreForm
+from .forms import MyFormSet, CreateStoreForm,formset_factory
 
 
 # Create your views here.
-
-
 def create_store(request):
+    # Check if the request method is POST
     if request.method == 'POST':
-        forms = []
-        num_forms = int(request.POST.get('total_forms', 1))
-        for i in range(num_forms):
-            form = CreateStoreForm(request.POST, prefix=f'form{i}')
-            forms.append(form)
-
-        if all(form.is_valid() for form in forms):
-            for form in forms:
+        # Instantiate the formset with the POST data
+        forms = MyFormSet(request.POST)
+        # Check if the formset is valid
+        print(len(forms),'len of froms')
+        for form in forms:
+            print('loooooooooops')
+            # Check if the individual form is valid
+            if form.is_valid():
+                print('foms is valid ')
                 form.save()
-            return redirect('store_list')
+            else:
+                # Handle the case where an individual form is not valid
+                # For example, you can add error messages to the form
+                # or log the error
+                print('Form is not valid:')
+        # Redirect or return a success message
+        return render(request, 'add_store.html', {'forms': forms})
     else:
-        forms = [CreateStoreForm(prefix=f'form{i}') for i in range(1)]
+        # Display empty formset
+        forms = MyFormSet()
 
     return render(request, 'add_store.html', {'forms': forms})

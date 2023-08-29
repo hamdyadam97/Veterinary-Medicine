@@ -70,10 +70,12 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th class="border-gray-200">product name</th>
-                <th class="border-gray-200">new qty</th>
-                <th class="border-gray-200">name company</th>
-                <th class="border-gray-200">supplier</th>
+                <th class="border-gray-200">product_type</th>
+                <th class="border-gray-200">name</th>
+                <th class="border-gray-200">regular_price</th>
+                <th class="border-gray-200">purchasing_price</th>
+                <th class="border-gray-200">last price</th>
+                <th class="border-gray-200">description</th>
 
             </tr>
         </thead>
@@ -87,54 +89,70 @@
         <tr>
             <td>
                  <div class="form-group mb-4">
-                     <label for="product_name">product name</label>
+                     <label for="product_type">product type</label>
                      <div class="input-group">
-                         <span class="input-group-text" id="basic-addon2">
-                             <span class="fas fa-unlock-alt"></span>
-                         </span>
-                         {{ form.product_name }}
+
+                         {{ form.product_type }}
                      </div>
-                     <span class="text-error">{{ form.product_name.errors }}</span>
+                     <span class="text-error">{{ form.product_type.errors }}</span>
                  </div>
             </td>
             <td>
                  <div class="form-group mb-4">
-                     <label for="new_qty">new_qty</label>
+                     <label for="name">name</label>
                      <div class="input-group">
-                         <span class="input-group-text" id="basic-addon2">
-                             <span class="fas fa-unlock-alt"></span>
-                         </span>
-                         {{ form.new_qty }}
+
+                         {{ form.name }}
                      </div>
-                     <span class="text-error">{{ form.new_qty.errors }}</span>
+                     <span class="text-error">{{ form.name.errors }}</span>
                  </div>
             </td>
             <td>
                 <div class="form-group mb-4">
-                     <label for="name_company">name company</label>
+                     <label for="regular_price">regular price</label>
                      <div class="input-group">
-                         <span class="input-group-text" id="basic-addon2">
-                             <span class="fas fa-unlock-alt"></span>
-                         </span>
-                         {{ form.name_company }}
+
+                         {{ form.regular_price }}
                      </div>
-                     <span class="text-error">{{ form.name_company.errors }}</span>
+                     <span class="text-error">{{ form.regular_price.errors }}</span>
+                 </div>
+            </td>
+
+            <td>
+                <div class="form-group mb-4">
+                     <label for="purchasing_price">purchasing price</label>
+                     <div class="input-group">
+
+                         {{ form.purchasing_price }}
+                     </div>
+                     <span class="text-error">{{ form.purchasing_price.errors }}</span>
                  </div>
             </td>
             <td>
                 <div class="form-group mb-4">
-                     <label for="supplier">supplier</label>
+                     <label for="last_price">last price</label>
                      <div class="input-group">
-                         <span class="input-group-text" id="basic-addon2">
-                             <span class="fas fa-unlock-alt"></span>
-                         </span>
-                         {{ form.supplier }}
+
+                         {{ form.last_price }}
                      </div>
-                     <span class="text-error">{{ form.supplier.errors }}</span>
+                     <span class="text-error">{{ form.last_price.errors }}</span>
+                 </div>
+            </td>
+
+            <td>
+                <div class="form-group mb-4">
+                     <label for="description">description</label>
+                     <div class="input-group">
+
+                         {{ form.description }}
+                     </div>
+                     <span class="text-error">{{ form.description.errors }}</span>
                  </div>
             </td>
         </tr>
+
     {% endfor %}
+
     <td>
         <div class="d-grid">
             <button type="submit" class="btn btn-gray-800">Save</button>
