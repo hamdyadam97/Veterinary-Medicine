@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import MyFormSet, CreateStoreForm,formset_factory
+from .models import Store
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -28,3 +30,12 @@ def create_store(request):
         forms = MyFormSet()
 
     return render(request, 'add_store.html', {'forms': forms})
+
+
+def list_store(request):
+    s_list = Store.objects.all()
+    paginator = Paginator(s_list, 25)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    stores = paginator.get_page(page_number)
+    return render(request, "display_products.html", {"stores": stores})
